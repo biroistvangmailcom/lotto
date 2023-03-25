@@ -5,7 +5,6 @@ with open('lotto.csv', newline='') as f:
     reader = csv.reader(f)
     historical_data = list(reader)
 
-
 #Generate 5 random numbers between 1 and 90
 def generate_random_numbers():
     numbers = []
@@ -17,7 +16,7 @@ def generate_random_numbers():
 def compare_numbers(new_numbers, historical_data):
     for data in historical_data:
         matches = set(new_numbers).intersection(set(data))
-        if len(matches) >= 3:
+        if len(matches) >= 2:
             return True
     return False
 
