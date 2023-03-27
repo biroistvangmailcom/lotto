@@ -1,6 +1,17 @@
 import random
 import csv
 
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 #import historical data to list
 with open('lotto.csv', newline='') as f:
     reader = csv.reader(f)
@@ -22,10 +33,15 @@ def compare_numbers(new_numbers, historical_data):
     for data in historical_data:
         matches = set(new_numbers).intersection(set(data))
         if len(matches) >= 3:
-            print("---------------------------------")
-            print(matches)
+            if len(matches) >=4:
+                print(bcolors.WARNING + "---------------------------------")
+                print(len(matches) , (matches))
+                print(new_numbers)
+                print(bcolors.WARNING + "---------------------------------")
+            print(bcolors.OKBLUE + "---------------------------------")
+            print(len(matches) , (matches))
             print(new_numbers)
-            print("---------------------------------")
+            print(bcolors.OKBLUE + "---------------------------------")
             return True
     return False
 
@@ -37,7 +53,7 @@ def generate_unique_numbers(historical_data):
             return new_numbers
 
 #Test the program
-for i in range(10):
+for i in range(100):
     numbers = generate_unique_numbers(historical_data)
-    print("Set", i+1, ":", numbers)
+    print(bcolors.OKGREEN + "Set", i+1, ":", numbers)
     historical_data.append(numbers)
