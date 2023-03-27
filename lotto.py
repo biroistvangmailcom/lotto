@@ -1,6 +1,7 @@
 import random
 import csv
 
+#import historical data to list
 with open('lotto.csv', newline='') as f:
     reader = csv.reader(f)
     historical_data = list(reader)
@@ -8,15 +9,23 @@ with open('lotto.csv', newline='') as f:
 #Generate 5 random numbers between 1 and 90
 def generate_random_numbers():
     numbers = []
-    for i in range(5):
-        numbers.append(random.randint(1, 90))
+    while len(numbers) < 5:
+        number = random.randint(1, 90)
+
+        if number not in numbers:
+            numbers.append(number)
+
     return numbers
 
 #Compare the new and historical sets of numbers to check for matches
 def compare_numbers(new_numbers, historical_data):
     for data in historical_data:
         matches = set(new_numbers).intersection(set(data))
-        if len(matches) >= 2:
+        if len(matches) >= 3:
+            print("---------------------------------")
+            print(matches)
+            print(new_numbers)
+            print("---------------------------------")
             return True
     return False
 
@@ -26,9 +35,6 @@ def generate_unique_numbers(historical_data):
         new_numbers = generate_random_numbers()
         if not compare_numbers(new_numbers, historical_data):
             return new_numbers
-
-#Add historical data here. List or array of previous sets of numbers consisting of 5 integers.
-
 
 #Test the program
 for i in range(10):
