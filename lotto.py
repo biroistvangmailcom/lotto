@@ -33,11 +33,16 @@ def compare_numbers(new_numbers, historical_data):
     for data in historical_data:
         matches = set(new_numbers).intersection(set(data))
         if len(matches) >= 3:
-            if len(matches) >=4:
+            if len(matches) == 4:
                 print(bcolors.WARNING + "---------------------------------")
                 print(len(matches) , (matches))
                 print(new_numbers)
                 print(bcolors.WARNING + "---------------------------------")
+            elif len(matches) == 5:
+                print(bcolors.FAIL + "---------------------------------")
+                print(len(matches) , (matches))
+                print(new_numbers)
+                print(bcolors.FAIL + "---------------------------------")
             print(bcolors.OKBLUE + "---------------------------------")
             print(len(matches) , (matches))
             print(new_numbers)
