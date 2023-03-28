@@ -4,15 +4,12 @@ import csv
 with open('lotto.csv', newline='') as f:
     reader = csv.reader(f)
     historical_data = list(reader)
-    test = historical_data[0]
-    piece = test[0]
+    length = len(historical_data)
 
-
+for i in range(length):
+    data = list(map(int, i))
 #print(historical_data)
-print(type(test))
-print(type(piece))
-print(piece)
-print(test)
+print(length)
 
 
 
