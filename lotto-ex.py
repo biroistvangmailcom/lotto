@@ -16,3 +16,5 @@ even_percent = round(sum(even_numbers) / (total_draws * 5) * 100, 2)
 
 print(f"Percentage of odd numbers: {odd_percent}%")
 print(f"Percentage of even numbers: {even_percent}%")
+
+print("a")
