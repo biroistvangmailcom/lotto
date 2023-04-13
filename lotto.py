@@ -16,7 +16,12 @@ def generate_random_numbers():
 def compare_numbers(new_numbers, historical_data):
     for data in historical_data:
         matches = set(new_numbers).intersection(set(data))
-        if len(matches) >= 2:
+        if len(matches) >= 3:
+            print("----------------------------")
+            print("its bad chance 3 numbers from the 5 was already taken in the past")
+            print(new_numbers)
+            print(matches)
+            print("----------------------------")
             return True
     return False
 
@@ -31,7 +36,7 @@ def generate_unique_numbers(historical_data):
 
 
 #Test the program
-for i in range(10):
+for i in range(100):
     numbers = generate_unique_numbers(historical_data)
     print("Set", i+1, ":", numbers)
     historical_data.append(numbers)
